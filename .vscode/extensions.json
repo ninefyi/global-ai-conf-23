@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-azuretools.vscode-azureappservice",
+        "hoovercj.vscode-power-mode",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.copilot-labs",
+        "ms-python.python",
+        "ms-azuretools.vscode-docker"
+    ],
+}
