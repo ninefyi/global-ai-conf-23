@@ -3,3 +3,6 @@ fastapi
 pymongo
 langchain
 uvicorn
+python-dotenv
+openai
+tiktoken
