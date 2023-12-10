@@ -1,11 +1,12 @@
 # Build Semantic Search Application with Azure OpenAI service and MongoDB Atlas Search
 
-* Global AI Conference 2023
+* Global AI Conference 2023 - Tue, 12 Dec 2023
 * Stack: Azure OpenAI Service, FastAPI, VueJS, LangChain, MongoDB Atlas Search (Atlas Vector Search)
+* [Slide](./slide/12-Dec-2023.pdf)
 
-* Reference 1: https://medium.com/microsoftazure/azure-openai-and-langchain-eba69f18f050
-* Reference 2: https://techcommunity.microsoft.com/t5/startups-at-microsoft/build-a-chatbot-to-query-your-documentation-using-langchain-and/ba-p/3833134
-* Reference 3: https://www.mongodb.com/developer/products/atlas/semantic-search-mongodb-atlas-vector-search/
+* [Reference 1:](https://medium.com/microsoftazure/azure-openai-and-langchain-eba69f18f050)
+* [Reference 2:](https://techcommunity.microsoft.com/t5/startups-at-microsoft/build-a-chatbot-to-query-your-documentation-using-langchain-and/ba-p/3833134)
+* [Reference 3:](https://www.mongodb.com/developer/products/atlas/semantic-search-mongodb-atlas-vector-search/)
 
 * Create Atlas Vector Search Index
 ```shell
@@ -60,3 +61,4 @@ OPENAI_API_VERSION ="2023-05-15"
   height: auto;
 }
 </style>
+
