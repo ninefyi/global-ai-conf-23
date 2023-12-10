@@ -42,3 +42,21 @@ OPENAI_API_VERSION ="2023-05-15"
 `uvicorn main:app --host 127.0.0.1 --port 8000 --reload`
 * Run VueJS
 `npm run dev`
+## Create  Vector Search Index
+<img src="./ss/image-01.png" alt="image" class="custom-image">
+
+## FastAPI
+<img src="./ss/image-03.png" alt="image" class="custom-image">
+ 
+## VueJS
+<img src="./ss/image-02.png" alt="image" class="custom-image">
+
+## Azure AI Studio
+<img src="./ss/image-04.png" alt="image" class="custom-image">
+
+<style>
+.custom-image {
+  width: 800px;
+  height: auto;
+}
+</style>
