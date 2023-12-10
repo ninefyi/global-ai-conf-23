@@ -1,0 +1,15 @@
+{
+    "name": "Python, PyMongo, and Langchain",
+    "dockerFile": "Dockerfile",
+    "customizations": {
+        "extensions": [
+            "ms-python.python",
+            "ms-azuretools.vscode-azureappservice"
+        ],
+        "settings": {
+            "python.pythonPath": "/usr/local/bin/python",
+            "terminal.integrated.shell.linux": "/bin/bash"
+        }
+    },
+    "appPort": [8000]
+}
