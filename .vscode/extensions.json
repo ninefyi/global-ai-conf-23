@@ -8,6 +8,7 @@
         "GitHub.copilot-labs",
         "ms-python.python",
         "ms-azuretools.vscode-docker",
-        "johnpapa.vscode-cloak"
+        "johnpapa.vscode-cloak",
+        "Vue.volar", "Vue.vscode-typescript-vue-plugin"
     ],
 }

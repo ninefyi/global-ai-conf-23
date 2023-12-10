@@ -1,3 +1,4 @@
+from ast import List
 from fastapi import FastAPI
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
@@ -5,8 +6,22 @@ from dotenv import load_dotenv
 import os
 from langchain.embeddings import AzureOpenAIEmbeddings
 from langchain.vectorstores import MongoDBAtlasVectorSearch
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 load_dotenv(dotenv_path=".env.test")
 
@@ -38,28 +53,37 @@ async def root():
 @app.get("/search")
 async def search(query: str):
     # Your code here
+    results = []
     try:
-        docs = collection.find({"plot_embedding_azureopenai":{"$exists": "true"}}).limit(50)
-        print(docs)
-        # vector_search = MongoDBAtlasVectorSearch.from_documents(
-        #     docs,
-        #     embeddings,
-        #     index_name="vector_plot_embedding_azureopenai"  
-        # )
-        # vector_search = MongoDBAtlasVectorSearch.from_connection_string(
-        #     uri,
-        #     f"mflix.movies",
-        #     embeddings,
-        #     index_name="vector_plot_embedding_azureopenai"
-        # )
-        # results = vector_search.similarity_search_with_score(query=query, k=5)
-        # print(results)
+        vectorSearch = {
+                '$vectorSearch': {
+                    'index': 'vector_index', 
+                    'path': 'plot_embedding_azureopenai', 
+                    'queryVector': generate_embedding(query),
+                    'numCandidates': 150, 
+                    'limit': 10
+                }
+        }
+        project = {
+                '$project': {
+                    '_id': 0,
+                    'title': 1, 
+                    'plot': 1, 
+                    'year': 1, 
+                    'poster':1,
+                    'score': {
+                        '$meta': 'vectorSearchScore'
+                    }
+                }
+            }
+        pipeline = [vectorSearch, project]
+        docs = collection.aggregate(pipeline)
         for document in docs:
-            print(f'Movie Name: {document["title"]},\nMovie Plot: {document["plot"]}\n')
+            results.append(document)
         
     except Exception as e:
         print(e)
-    return {"results": []}
+    return {"results": results}
 
 @app.get("/init")
 async def init_embedding():
