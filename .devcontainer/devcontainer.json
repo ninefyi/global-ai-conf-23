@@ -11,5 +11,7 @@
             "terminal.integrated.shell.linux": "/bin/bash"
         }
     },
-    "appPort": [8000]
+    "postStartCommand": "bash .devcontainer/setup.sh",
+    "forwardPorts": [8000],
+    "runArgs": ["-p=8000:8000"]
 }
